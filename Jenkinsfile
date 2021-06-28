@@ -4,10 +4,18 @@ pipeline {
  stages {
         stage('Docker Build and Tag image') {
             steps {
-                sh 'docker build -t ferencmolnar/gowebapp:latest .' 
+                //sh 'docker build -t ferencmolnar/gowebapp:latest .' 
                 //sh 'docker tag gowebapp:latest ferencmolnar/gowebapp:latest'
                 //sh 'docker tag samplewebapp ferencmolnar/gowebapp:$BUILD_NUMBER'
-                echo "Jenkins build id is: $BUILD_ID"
+                //echo "Jenkins build id is: $BUILD_ID"
+		 dockerfile {
+        		filename 'Dockerfile.build'
+        		dir 'build'
+        		label 'ferencmolnar/gowebapp:latestl'
+        		//additionalBuildArgs  '--build-arg version=1.0.2'
+        		//args '-v /tmp:/tmp'
+    			}
+		}
             }
         }
      
