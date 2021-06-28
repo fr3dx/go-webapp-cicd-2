@@ -8,6 +8,7 @@ pipeline {
  stages {
         stage('Docker Build and Tag image') {
             steps {
+		 echo "$DOCKER_IMAGE_LABEL"
 		 dockerfile {
         		filename 'Dockerfile.build'
         		dir 'build'
