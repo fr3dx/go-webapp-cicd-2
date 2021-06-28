@@ -8,7 +8,7 @@ pipeline {
  stages {
         stage('Docker Build and Tag image') {
             steps {
-		 echo "$DOCKER_IMAGE_LABEL"
+		 echo '$DOCKER_IMAGE_LABEL'
 		 dockerfile {
         		filename 'Dockerfile.build'
         		dir 'build'
@@ -30,7 +30,7 @@ pipeline {
         stage('Run Docker container on Jenkins Agent') {
             steps {
 		timeout(time: 3, unit: 'SECONDS') {
-                sh "docker run -d -p 80:80 $DOCKER_IMAGE_LABEL"
+                sh 'docker run -d -p 80:80 $DOCKER_IMAGE_LABEL'
                }
             }
 	}
@@ -42,7 +42,7 @@ pipeline {
         			script: 'docker ps',
         			returnStdout: true
     				).trim()
-    				echo "Docker container name: ${DOCKER_CONTAINER_NAME}"
+    				echo 'Docker container name: ${DOCKER_CONTAINER_NAME}'
 		}
             }
         }
