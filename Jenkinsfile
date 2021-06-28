@@ -2,7 +2,7 @@ pipeline {
     agent any
 	
    environment {
-        DOCKER_IMAGE_LABEL = 'ferencmolnar/gowebapp:latestl'
+        DOCKER_IMAGE_LABEL = 'ferencmolnar/gowebapp:latest'
     }
 	
  stages {
